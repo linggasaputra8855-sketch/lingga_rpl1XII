@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOES STORE - Formulir Pembelian</title>
+    <style>
+        :root {
+            --primary-color: #FFB347;
+            --secondary-color: #FFDAB9;
+            --accent-color: #FF8C00;
+            --text-color: #5A3E2A;
+            --light-color: #FFF8E1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .store-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: var(--light-color);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            background-color: white;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 5px rgba(255,140,0,0.3);
+        }
+        
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 30px auto 0;
+            font-weight: bold;
+        }
+        
+        .submit-btn:hover {
+            background-color: #a75e05;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .footer {
+            background-color: var(--primary-color);
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+            color: var(--text-color);
+        }
+        
+        .footer p {
+            margin: 5px 0;
+        }
+        
+        .hint {
+            font-size: 14px;
+            color: #888;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        .size-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .size-option {
+            display: none;
+        }
+        
+        .size-option + label {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .size-option:checked + label {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--primary-color);
+            background-color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .quantity-btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .quantity-value {
+            width: 40px;
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="logo.jpeg" alt="SHOES STORE Logo" class="logo">
+            <span class="store-name">SHOES STORE</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#">Beranda</a>
+            <a href="#">Sepatu Pria</a>
+            <a href="#">Sepatu Wanita</a>
+            <a href="#">Sepatu Anak</a>
+            <a href="#">Promo</a>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h1>FORMULIR PEMBELIAN SEPATU</h1>
+        
+        <form action="" method="POST">
+            <div class="form-group">
+                <label for="nama_pembeli">Nama Pembeli:</label>
+                <input type="text" id="nama_pembeli" name="nama_pembeli" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="telepon">Nomor Telepon:</label>
+                <input type="tel" id="telepon" name="telepon" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="alamat">Alamat Pengiriman:</label>
+                <textarea id="alamat" name="alamat" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="nama_barang">Model Sepatu:</label>
+                <input type="text" id="nama_barang" name="nama_barang" required>
+                <p class="hint">Contoh: Sneakers Pria Casual Warna Hitam</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="kategori">Kategori Sepatu:</label>
+                <select id="kategori" name="kategori">
+                    <option disabled selected>Pilih Kategori</option>
+                    <option value="Sneakers">Sneakers</option>
+                    <option value="Running">Running</option>
+                    <option value="Casual">Casual</option>
+                    <option value="Formal">Formal</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Slip On">Slip On</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Ukuran Sepatu:</label>
+                <div class="size-options">
+                    <?php for($i = 35; $i <= 44; $i++): ?>
+                        <input type="radio" id="size-<?= $i ?>" name="ukuran" value="<?= $i ?>" class="size-option" <?= $i == 38 ? 'checked' : '' ?>>
+                        <label for="size-<?= $i ?>"><?= $i ?></label>
+                    <?php endfor; ?>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Jumlah Pesanan:</label>
+                <div class="quantity-selector">
+                    <button type="button" class="quantity-btn" onclick="decrementQuantity()">-</button>
+                    <input type="number" id="quantity" name="quantity" min="1" max="5" value="1" class="quantity-value" readonly>
+                    <button type="button" class="quantity-btn" onclick="incrementQuantity()">+</button>
+                </div>
+                <p class="hint">Maksimal 5 pasang per pembelian</p>
+            </div>
+            
+            <button type="submit" class="submit-btn">Pesan Sekarang</button>
+        </form>
+    </div>
+    
+    <footer class="footer">
+        <p>&copy; 2023 SHOES STORE. Hak Cipta Dilindungi.</p>
+        <p>Alamat Toko: Jl. Sepatu Indah No. 45, Kota Footwear, Indonesia</p>
+        <p>Telepon: (021) 9876-5432 | Email: info@shoesstore.com</p>
+    </footer>
+
+    <script>
+        function incrementQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            let value = parseInt(quantityInput.value);
+            if (value < 5) {
+                quantityInput.value = value + 1;
+            }
+        }
+        
+        function decrementQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            let value = parseInt(quantityInput.value);
+            if (value > 1) {
+                quantityInput.value = value - 1;
+            }
+        }
+    </script>
+</body>
+</html>
+```
